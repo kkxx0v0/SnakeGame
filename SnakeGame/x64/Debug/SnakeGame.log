@@ -1,4 +1,4 @@
 ﻿  Snake.cpp
+C:\Users\codeZ\Desktop\1\SnakeGame\Snake.cpp(4,1): error C2600: “Snake::Snake”: 不能定义编译器生成的特殊成员函数(必须首先在类中声明)
   SnakeGame.cpp
   正在生成代码...
-  SnakeGame.vcxproj -> C:\Users\codeZ\Desktop\1\SnakeGame\x64\Debug\SnakeGame.exe

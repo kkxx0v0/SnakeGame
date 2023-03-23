@@ -4,7 +4,7 @@
 #include "Snake.h"
 
 int main()
-{
-    GameStart();
+{ 
+	
 }
 
