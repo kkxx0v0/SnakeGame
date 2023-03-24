@@ -1,10 +1,10 @@
 ﻿#include <iostream>
 #include "Game.h"
-#include "Map.h"
-#include "Snake.h"
 
 int main()
 { 
-	
+	//Game game;
+	Game game(48,48,20,10);
+	return game.run();
 }
 

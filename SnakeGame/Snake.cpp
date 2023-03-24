@@ -1,10 +1,24 @@
 #include "Snake.h"
 
-Snake::Snake()
+Node::Node()
+{
+	next = nullptr;
+}
+
+Node::Node(int row, int col)
+{
+	this->row = row;
+	this->col = col;
+	this->next = nullptr;
+}
+
+Snake::Snake(int speed)
 {
 	dir = 上;			//初始方向为向上
 	snakeNum = 2;		//初始长度为2
+	SPEED = speed;
 	head = new Node;
+	Add();
 }
 
 void Snake::ChangeDir()
@@ -65,4 +79,14 @@ void Snake::_HeadMove()
 	default:
 		break;
 	}
+}
+
+void Snake::Add()
+{
+	Node* p = head;
+	while (p->next)
+	{
+		p = p->next;
+	}
+	p->next = new Node;
 }

@@ -1,4 +1,17 @@
-﻿  Snake.cpp
-C:\Users\codeZ\Desktop\1\SnakeGame\Snake.cpp(4,1): error C2600: “Snake::Snake”: 不能定义编译器生成的特殊成员函数(必须首先在类中声明)
+﻿  Game.cpp
+C:\Users\codeZ\Desktop\1\SnakeGame\Game.cpp(32,46): error C2679: 二元“=”: 没有找到接受“<unnamed-enum-空>”类型的右操作数的运算符(或没有可接受的转换)
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\vector(1096,26): message : 可能是“std::vector<int,std::allocator<int>> &std::vector<int,std::allocator<int>>::operator =(std::initializer_list<_Ty>)”
+          with
+          [
+              _Ty=int
+          ]
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\vector(1075,26): message : 或    “std::vector<int,std::allocator<int>> &std::vector<int,std::allocator<int>>::operator =(const std::vector<int,std::allocator<int>> &)”
+C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.31.31103\include\vector(561,26): message : 或    “std::vector<int,std::allocator<int>> &std::vector<int,std::allocator<int>>::operator =(std::vector<int,std::allocator<int>> &&) noexcept(<expr>)”
+C:\Users\codeZ\Desktop\1\SnakeGame\Game.cpp(32,46): message : 尝试匹配参数列表“(_Ty, <unnamed-enum-空>)”时
+          with
+          [
+              _Ty=std::vector<int,std::allocator<int>>
+          ]
+  Map.cpp
   SnakeGame.cpp
   正在生成代码...

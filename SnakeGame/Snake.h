@@ -13,16 +13,8 @@ struct Node
 	int col;//表示结点所在列数
 	Node* next;
 
-	Node()
-	{
-		this->next = nullptr;
-	}
-	Node(int row,int col)
-	{
-		this->row = row;
-		this->col = col;
-		this->next = nullptr;
-	}
+	Node();
+	Node(int row, int col);
 };
 
 struct Snake
@@ -30,13 +22,14 @@ struct Snake
 	int dir;		//当前前进方向 默认为0（上）
 	int snakeNum;	//蛇的长度 包括头
 	Node* head;		//蛇头
+	int SPEED;		//速度
 
-	Snake();
+	Snake(int SPEED);
 	void ChangeDir();//4、改变前进方向
 	void Move();//5、蛇的前进
-
 	void _HeadMove();
 	void _BodyMove();
+	void Add();//6、蛇变长
 };
 
 //2、蛇前进方向
