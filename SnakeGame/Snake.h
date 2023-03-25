@@ -29,7 +29,7 @@ struct Snake
 	void Move();//5、蛇的前进
 	void _HeadMove();
 	void _BodyMove();
-	void Add();//6、蛇变长
+	void Add(int i,int j);//6、蛇变长
 };
 
 //2、蛇前进方向

@@ -1,6 +1,7 @@
 #ifndef __MAP_H__
 #define __MAP_H__
 #include<vector>
+#include<easyx.h>
 using namespace std;
 
 //1、地图元素
@@ -19,7 +20,10 @@ struct Map
 
 	//3、地图初始化
 	Map(int row, int col, int size);
-	
+
+	//4、绘画地图
+	void DrawMap();
+	void SetColor(int i, int j, int color);
 };
 
 

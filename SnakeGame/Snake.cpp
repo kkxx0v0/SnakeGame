@@ -2,6 +2,8 @@
 
 Node::Node()
 {
+	this->row = -1;
+	this->col = -1;
 	next = nullptr;
 }
 
@@ -17,8 +19,8 @@ Snake::Snake(int speed)
 	dir = 上;			//初始方向为向上
 	snakeNum = 2;		//初始长度为2
 	SPEED = speed;
-	head = new Node;
-	Add();
+	head = new Node();
+	Add(head->row, head->col);
 }
 
 void Snake::ChangeDir()
@@ -81,12 +83,12 @@ void Snake::_HeadMove()
 	}
 }
 
-void Snake::Add()
+void Snake::Add(int i,int j)
 {
 	Node* p = head;
 	while (p->next)
 	{
 		p = p->next;
 	}
-	p->next = new Node;
+	p->next = new Node(i,j);
 }
