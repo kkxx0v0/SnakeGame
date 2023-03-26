@@ -13,8 +13,8 @@ struct Node
 	int col;//表示结点所在列数
 	Node* next;
 
-	Node();
-	Node(int row, int col);
+	explicit Node();
+	explicit Node(int row, int col);
 };
 
 struct Snake
@@ -24,7 +24,7 @@ struct Snake
 	Node* head;		//蛇头
 	int SPEED;		//速度
 
-	Snake(int SPEED);
+	explicit Snake(int SPEED);
 	void ChangeDir();//4、改变前进方向
 	void Move();//5、蛇的前进
 	void _HeadMove();

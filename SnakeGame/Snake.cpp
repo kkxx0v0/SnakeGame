@@ -19,7 +19,7 @@ Snake::Snake(int speed)
 	dir = 上;			//初始方向为向上
 	snakeNum = 2;		//初始长度为2
 	SPEED = speed;
-	head = new Node();
+	head = new Node;
 	Add(head->row, head->col);
 }
 
@@ -28,16 +28,16 @@ void Snake::ChangeDir()
 	switch (_getch())
 	{
 	case 上:
-		dir = 上;
+		if(dir != 下)	dir = 上;
 		break;
 	case 下:
-		dir = 下;
+		if (dir != 上)	dir = 下;
 		break;
 	case 左:
-		dir = 左;
+		if (dir != 右)	dir = 左;
 		break;
 	case 右:
-		dir = 右;
+		if (dir != 左)	dir = 右;
 		break;
 	default:
 		break;

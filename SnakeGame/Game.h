@@ -10,7 +10,7 @@ struct Food
 {
 	Node pos;
 	int FoodNum;
-	Food();
+	explicit Food();
 };
 
 //”Œœ∑¿‡
@@ -21,7 +21,7 @@ struct Game
 	Snake* GameSnake;
 	Map* GameMap;
 	Food* GameFood;
-	Game(int row = 48, int col = 48, int size = 20, int speed = 10)
+	explicit Game(int row = 48, int col = 48, int size = 20, int speed = 10)
 	{
 		ROW = row, COL = col, SIZE = size, SPEED = speed;
 		GameSnake = nullptr;

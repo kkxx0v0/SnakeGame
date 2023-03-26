@@ -11,19 +11,17 @@ void Game::GameStart()
 	srand((unsigned)time(NULL));
 
 	//初始化地图、蛇、食物
-	Map tempMap(ROW, COL, SIZE);
-	GameMap = &tempMap;
-
-	Snake tempSnake(SPEED);
-	GameSnake = &tempSnake;
+	
+	GameMap = new Map(ROW, COL, SIZE);
+	
+	GameSnake = new Snake(SPEED);
 	GameSnake->head->row = ROW / 2;
 	GameSnake->head->col = COL / 2;
 	GameSnake->head->next->row = ROW / 2;
 	GameSnake->head->next->col = COL / 2 + 1;
 	PrintSnake(蛇);
 
-	Food tempFood;
-	GameFood = &tempFood;
+	GameFood = new Food;
 	CreatFood();
 	PrintFood();
 
@@ -65,7 +63,7 @@ void Game::defeat()
 			exit(0);
 	}
 	//蛇撞到自己
-	Node* s = GameSnake->head;
+	Node* s = GameSnake->head->next;
 	while (s)
 	{
 		if (GameSnake->head->row == s->row || GameSnake->head->col == s->col)
@@ -115,6 +113,7 @@ void Game::update()
 	while (1)
 	{
 		PrintSnake(空);
+		int n = _kbhit();
 		if (_kbhit())//判断键盘有没有按键操作，如果没有就返回假0，否则为真1   <conio.h>
 		{
 			GameSnake->ChangeDir();

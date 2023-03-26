@@ -12,14 +12,14 @@ enum { 空 = 0, 墙 = 1, 蛇 = 2, 食物 = 3 };
 //地图类
 struct Map
 {
-	vector<vector<int>> pMap;
+	int** pMap;
 	//2、地图大小设定
 	int ROW;	//行
 	int COL;	//列
 	int SIZE; //方块大小
 
 	//3、地图初始化
-	Map(int row, int col, int size);
+	explicit Map(int row, int col, int size);
 
 	//4、绘画地图
 	void DrawMap();

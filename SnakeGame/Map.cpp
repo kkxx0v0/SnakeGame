@@ -5,10 +5,11 @@ Map::Map(int row, int col, int size)
 	ROW = row;
 	COL = col;
 	SIZE = size;
-	pMap = vector<vector<int>>(ROW, vector<int>(COL));
-	for (int i = 0; i < ROW - 1; i++)
+	pMap = new int* [ROW];
+	for (size_t i = 0; i < ROW - 1; i++)
 	{
-		for (int j = 0; j < COL - 1; j++)
+		pMap[i] = new int[COL];
+		for (size_t j = 0; j < COL - 1; j++)
 		{
 			if (i == 0 || i == ROW - 1 || j == 0 || j == COL - 1)
 				pMap[i][j] = ǽ;
