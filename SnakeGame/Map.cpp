@@ -6,10 +6,10 @@ Map::Map(int row, int col, int size)
 	COL = col;
 	SIZE = size;
 	pMap = new int* [ROW];
-	for (size_t i = 0; i < ROW - 1; i++)
+	for (size_t i = 0; i < ROW; i++)
 	{
 		pMap[i] = new int[COL];
-		for (size_t j = 0; j < COL - 1; j++)
+		for (size_t j = 0; j < COL; j++)
 		{
 			if (i == 0 || i == ROW - 1 || j == 0 || j == COL - 1)
 				pMap[i][j] = ǽ;

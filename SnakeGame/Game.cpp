@@ -33,7 +33,6 @@ int Game::run()
 	initgraph(COL * SIZE, ROW * SIZE);//打开图形界面
 	GameStart();
 
-	//TODO
 	update();
 
 	closegraph();//关闭图形窗口
@@ -66,13 +65,14 @@ void Game::defeat()
 	Node* s = GameSnake->head->next;
 	while (s)
 	{
-		if (GameSnake->head->row == s->row || GameSnake->head->col == s->col)
+		if (GameSnake->head->row == s->row && GameSnake->head->col == s->col)
 		{
 			if (IDYES == MessageBox(GetHWnd(), L"你咬自己了，是否要重新开始游戏", L"提示", MB_YESNO))
 				GameStart();
 			else
 				exit(0);
 		}
+		s = s->next;
 	}
 }
 
@@ -113,8 +113,7 @@ void Game::update()
 	while (1)
 	{
 		PrintSnake(空);
-		int n = _kbhit();
-		if (_kbhit())//判断键盘有没有按键操作，如果没有就返回假0，否则为真1   <conio.h>
+		if (_kbhit())//判断键盘有没有按键操作，如果没有就返回假0，否则为真1<conio.h>
 		{
 			GameSnake->ChangeDir();
 		}
@@ -126,5 +125,8 @@ void Game::update()
 		{
 			CreatFood();
 		}
+		GameMap->DrawMap();
+		Sleep(GameSnake->SPEED);
+		cleardevice();
 	}
 }
