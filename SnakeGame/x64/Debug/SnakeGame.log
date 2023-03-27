@@ -1,6 +1,0 @@
-﻿  Map.cpp
-C:\Users\codeZ\Desktop\1\SnakeGame\Map.cpp(32,25): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\codeZ\Desktop\1\SnakeGame\Map.cpp(35,25): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\codeZ\Desktop\1\SnakeGame\Map.cpp(38,23): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-C:\Users\codeZ\Desktop\1\SnakeGame\Map.cpp(41,24): warning C4267: “参数”: 从“size_t”转换到“int”，可能丢失数据
-  SnakeGame.vcxproj -> C:\Users\codeZ\Desktop\1\SnakeGame\x64\Debug\SnakeGame.exe
