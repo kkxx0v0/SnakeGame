@@ -30,7 +30,8 @@ void Game::GameStart()
 
 int Game::run()
 {
-	initgraph(COL * SIZE, ROW * SIZE);//打开图形界面
+	initgraph(COL * SIZE, ROW * SIZE, EW_SHOWCONSOLE);//打开图形界面
+	SetWindowPos(GetHWnd(), 0, 0, 0, 0, 0, SWP_NOSIZE);
 	GameStart();
 
 	update();
@@ -113,7 +114,7 @@ void Game::update()
 	while (1)
 	{
 		PrintSnake(空);
-		if (_kbhit())//判断键盘有没有按键操作，如果没有就返回假0，否则为真1<conio.h>
+		if ( _kbhit() )//判断键盘有没有按键操作，如果没有就返回假0，否则为真1<conio.h>
 		{
 			GameSnake->ChangeDir();
 		}
@@ -126,7 +127,7 @@ void Game::update()
 			CreatFood();
 		}
 		GameMap->DrawMap();
-		Sleep(GameSnake->SPEED);
-		cleardevice();
+		Sleep(GameSnake->SPEED*20);
+		//cleardevice();
 	}
 }
