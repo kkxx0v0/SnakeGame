@@ -21,7 +21,7 @@ struct Game
 	Snake* GameSnake;
 	Map* GameMap;
 	Food* GameFood;
-	explicit Game(int row = 48, int col = 48, int size = 20, int speed = 10)
+	Game(int row = 48, int col = 48, int size = 20, int speed = 10)
 	{
 		ROW = row, COL = col, SIZE = size, SPEED = speed;
 		GameSnake = nullptr;

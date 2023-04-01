@@ -25,13 +25,13 @@ void Game::GameStart()
 	CreatFood();
 	PrintFood();
 
-	Sleep(1000);
+	SleepEx(1000,false);
 }
 
 int Game::run()
 {
-	initgraph(COL * SIZE, ROW * SIZE, EW_SHOWCONSOLE);//打开图形界面
-	SetWindowPos(GetHWnd(), 0, 0, 0, 0, 0, SWP_NOSIZE);
+	initgraph(ROW * SIZE, COL * SIZE, EW_SHOWCONSOLE);//打开图形界面
+	SetWindowPos(GetHWnd(), 0, 0, 0, ROW * SIZE, COL * SIZE, SWP_NOSIZE);
 	GameStart();
 
 	update();
@@ -53,7 +53,7 @@ void Game::Eaten()
 void Game::defeat()
 {
 	//蛇撞到墙
-	if (GameSnake->head->row == 0 || GameSnake->head->row == ROW || GameSnake->head->col == 0 || GameSnake->head->col == COL)
+	if (GameSnake->head->row <= 0 || GameSnake->head->row >= ROW || GameSnake->head->col <= 0 || GameSnake->head->col >= COL)
 	{
 		if (IDYES == MessageBox(GetHWnd(), L"你撞墙了，是否要重新开始游戏", L"提示", MB_YESNO))
 			//IDYES表示“是”，窗口的按钮被按下的值
@@ -94,7 +94,7 @@ void Game::CreatFood()
 	Node* s = GameSnake->head;
 	while (s)
 	{
-		if (s->row == RandRow && s->row == RandCol)
+		if (s->row == RandRow && s->col == RandCol)
 		{
 			CreatFood();
 		}
@@ -114,9 +114,21 @@ void Game::update()
 	while (1)
 	{
 		PrintSnake(空);
-		if ( _kbhit() )//判断键盘有没有按键操作，如果没有就返回假0，否则为真1<conio.h>
-		{
-			GameSnake->ChangeDir();
+		//if ( _kbhit() )//判断键盘有没有按键操作，如果没有就返回假0，否则为真1<conio.h>
+		//{
+		//	GameSnake->ChangeDir();
+		//}
+		if (GetKeyState('W') & 0x8000) {
+			GameSnake->ChangeDir('w');
+		}
+		else if (GetKeyState('S') & 0x8000) {
+			GameSnake->ChangeDir('s');
+		}
+		else if (GetKeyState('A') & 0x8000) {
+			GameSnake->ChangeDir('a');
+		}
+		else if (GetKeyState('D') & 0x8000) {
+			GameSnake->ChangeDir('d');
 		}
 		GameSnake->Move();
 		PrintSnake(蛇);
@@ -127,7 +139,6 @@ void Game::update()
 			CreatFood();
 		}
 		GameMap->DrawMap();
-		Sleep(GameSnake->SPEED*20);
-		//cleardevice();
+		SleepEx(GameSnake->SPEED*20,false);
 	}
 }

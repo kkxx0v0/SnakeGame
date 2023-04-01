@@ -19,7 +19,18 @@ struct Map
 	int SIZE; //方块大小
 
 	//3、地图初始化
-	explicit Map(int row, int col, int size);
+	Map(int row, int col, int size);
+	~Map()
+	{
+		for (int i = 0; i < ROW; i++) {
+			delete[] pMap[i];
+		}
+		delete[] pMap;
+		if (pMap)
+		{
+			pMap = nullptr;
+		}
+	}
 
 	//4、绘画地图
 	void DrawMap();

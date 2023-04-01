@@ -23,21 +23,25 @@ Snake::Snake(int speed)
 	Add(head->row, head->col);
 }
 
-void Snake::ChangeDir()
+void Snake::ChangeDir(char ch)
 {
-	switch (_getch())
+	switch (ch)
 	{
 	case 上:
-		if(dir != 下)	dir = 上;
+		if(dir != 下)	
+			dir = 上;
 		break;
 	case 下:
-		if (dir != 上)	dir = 下;
+		if (dir != 上)	
+			dir = 下;
 		break;
 	case 左:
-		if (dir != 右)	dir = 左;
+		if (dir != 右)	
+			dir = 左;
 		break;
 	case 右:
-		if (dir != 左)	dir = 右;
+		if (dir != 左)	
+			dir = 右;
 		break;
 	default:
 		break;
@@ -55,8 +59,8 @@ void Snake::_BodyMove()
 	Node* p = head, * q = p->next;
 	while (q != nullptr)
 	{
-		q->col = p->col;
 		q->row = p->row;
+		q->col = p->col;
 		p = p->next;
 		q = q->next;
 	}

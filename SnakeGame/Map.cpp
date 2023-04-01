@@ -6,10 +6,10 @@ Map::Map(int row, int col, int size)
 	COL = col;
 	SIZE = size;
 	pMap = new int* [ROW];
-	for (size_t i = 0; i < ROW; i++)
+	for (int i = 0; i < ROW; i++)
 	{
 		pMap[i] = new int[COL];
-		for (size_t j = 0; j < COL; j++)
+		for (int j = 0; j < COL; j++)
 		{
 			if (i == 0 || i == ROW - 1 || j == 0 || j == COL - 1)
 				pMap[i][j] = 墙;
@@ -52,5 +52,5 @@ void Map::SetColor(int i, int j,int color)
 {
 	//空为白色 墙为黑色 蛇为红色 食物为蓝色
 	setfillcolor(color);
-	fillrectangle(j * SIZE, i * SIZE, (j + 1) * SIZE, (i + 1) * SIZE);
+	fillrectangle(i * SIZE, j * SIZE, (i + 1) * SIZE, (j + 1) * SIZE);
 }

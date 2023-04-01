@@ -13,8 +13,8 @@ struct Node
 	int col;//表示结点所在列数
 	Node* next;
 
-	explicit Node();
-	explicit Node(int row, int col);
+	Node();
+	Node(int row, int col);
 };
 
 struct Snake
@@ -24,8 +24,18 @@ struct Snake
 	Node* head;		//蛇头
 	int SPEED;		//速度
 
-	explicit Snake(int SPEED);
-	void ChangeDir();//4、改变前进方向
+	Snake(int SPEED);
+	~Snake()
+	{
+		Node* curr = head;
+		while (curr != nullptr) {
+			Node* temp = curr;
+			curr = curr->next;
+			delete temp;
+		}
+	}
+
+	void ChangeDir(char ch);//4、改变前进方向
 	void Move();//5、蛇的前进
 	void _HeadMove();
 	void _BodyMove();
@@ -34,7 +44,7 @@ struct Snake
 
 //2、蛇前进方向
 //设置方向	使用enum枚举
-//	0上	1下	2左	3右
+//	w上	s下	a左	d右
 enum { 上 = 'w',下 = 's',左 = 'a',右 = 'd' };
 
 #endif // !__SNAKE_H__
