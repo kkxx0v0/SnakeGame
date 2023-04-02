@@ -102,6 +102,7 @@ void Game::CreatFood()
 	}
 	GameFood->pos = Node(RandRow, RandCol);
 	GameFood->FoodNum = 1;
+	GameMap->pMap[RandRow][RandCol] = Ê³Îï;
 }
 
 void Game::PrintFood()
