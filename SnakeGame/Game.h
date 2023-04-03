@@ -53,4 +53,6 @@ struct Game
 	void update();
 };
 
+bool IsKeyPressed(int vkey);
+
 #endif // !__GAME_H__

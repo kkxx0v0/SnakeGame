@@ -110,6 +110,19 @@ void Game::PrintFood()
 	GameMap->pMap[GameFood->pos.row][GameFood->pos.col] = Ê³Îï;
 }
 
+bool IsKeyPressed(int vkey) {
+	static bool keyPressed = false;
+	bool pressed = (GetKeyState(vkey) & 0x8000) != 0;
+	if (pressed && !keyPressed) {
+		keyPressed = true;
+		return true;
+	}
+	if (!pressed && keyPressed) {
+		keyPressed = false;
+	}
+	return false;
+}
+
 void Game::update()
 {
 	while (1)
@@ -119,16 +132,20 @@ void Game::update()
 		//{
 		//	GameSnake->ChangeDir();
 		//}
-		if (GetKeyState('W') & 0x8000) {
+		if (IsKeyPressed('W') )
+		{
 			GameSnake->ChangeDir('w');
 		}
-		else if (GetKeyState('S') & 0x8000) {
+		else if (IsKeyPressed('S'))
+		{
 			GameSnake->ChangeDir('s');
 		}
-		else if (GetKeyState('A') & 0x8000) {
+		else if (IsKeyPressed('A') )
+		{
 			GameSnake->ChangeDir('a');
 		}
-		else if (GetKeyState('D') & 0x8000) {
+		else if (IsKeyPressed('D'))
+		{
 			GameSnake->ChangeDir('d');
 		}
 		GameSnake->Move();
