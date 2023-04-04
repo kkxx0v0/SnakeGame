@@ -57,12 +57,16 @@ void Snake::Move()
 void Snake::_BodyMove()
 {
 	Node* p = head, * q = p->next;
+	Node temp1,temp2;
+	temp1 = Node(*p);
 	while (q != nullptr)
 	{
-		q->row = p->row;
-		q->col = p->col;
+		temp2 = Node(*q);
+		q->row = temp1.row;
+		q->col = temp1.col;
 		p = p->next;
 		q = q->next;
+		temp1 = temp2;
 	}
 }
 

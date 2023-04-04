@@ -128,10 +128,12 @@ void Game::update()
 	while (1)
 	{
 		PrintSnake(空);
+
 		//if ( _kbhit() )//判断键盘有没有按键操作，如果没有就返回假0，否则为真1<conio.h>
 		//{
 		//	GameSnake->ChangeDir();
 		//}
+
 		if (IsKeyPressed('W') )
 		{
 			GameSnake->ChangeDir('w');
@@ -148,6 +150,7 @@ void Game::update()
 		{
 			GameSnake->ChangeDir('d');
 		}
+
 		GameSnake->Move();
 		PrintSnake(蛇);
 		defeat();
@@ -156,6 +159,7 @@ void Game::update()
 		{
 			CreatFood();
 		}
+
 		GameMap->DrawMap();
 		SleepEx(GameSnake->SPEED*20,false);
 	}
