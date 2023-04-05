@@ -35,11 +35,16 @@ struct Snake
 		}
 	}
 
-	void ChangeDir(char ch);//4、改变前进方向
-	void Move();//5、蛇的前进
+	//4、改变前进方向
+	void ChangeDir(char ch);
+	//5、蛇的前进
+	void Move();
+	//头的前进
 	void _HeadMove();
+	//身体的前进
 	void _BodyMove();
-	void Add(int i,int j);//6、蛇变长
+	//6、蛇变长
+	void Add(int i,int j);
 };
 
 //2、蛇前进方向

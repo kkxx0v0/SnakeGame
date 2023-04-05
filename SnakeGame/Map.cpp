@@ -22,9 +22,9 @@ Map::Map(int row, int col, int size)
 void Map::DrawMap()
 {
 	BeginBatchDraw();
-	for (size_t i = 0; i < ROW; i++)
+	for (int i = 0; i < ROW; i++)
 	{
-		for (size_t j = 0; j < COL; j++)
+		for (int j = 0; j < COL; j++)
 		{
 			switch (pMap[i][j])
 			{

@@ -1,3 +1,4 @@
+#include<ctime>
 #include "Game.h"
 
 Food::Food()
@@ -7,13 +8,9 @@ Food::Food()
 
 void Game::GameStart()
 {
-	//时间数种子
-	srand((unsigned)time(NULL));
-
 	//初始化地图、蛇、食物
-	
 	GameMap = new Map(ROW, COL, SIZE);
-	
+
 	GameSnake = new Snake(SPEED);
 	GameSnake->head->row = ROW / 2;
 	GameSnake->head->col = COL / 2;
@@ -25,26 +22,33 @@ void Game::GameStart()
 	CreatFood();
 	PrintFood();
 
-	SleepEx(1000,false);
+	SleepEx(1000, false);
 }
 
 int Game::run()
 {
-	initgraph(ROW * SIZE, COL * SIZE, EW_SHOWCONSOLE);//打开图形界面
+	//打开图形界面
+	initgraph(ROW * SIZE, COL * SIZE, EW_SHOWCONSOLE);
 	SetWindowPos(GetHWnd(), 0, 0, 0, ROW * SIZE, COL * SIZE, SWP_NOSIZE);
-	GameStart();
 
+	//时间数种子
+	srand((unsigned)time(NULL));
+
+	GameStart();
 	update();
 
-	closegraph();//关闭图形窗口
+	//关闭图形窗口
+	closegraph();
 	return 0;
 }
 
 void Game::Eaten()
 {
+	//判断蛇头位置和食物位置
 	if (GameSnake->head->row == GameFood->pos.row && GameSnake->head->col == GameFood->pos.col)
 	{
 		GameFood->FoodNum = 0;
+		//蛇变长
 		GameSnake->Add(GameFood->pos.row, GameFood->pos.col);
 		GameSnake->snakeNum++;
 	}
@@ -89,8 +93,10 @@ void Game::PrintSnake(int val)
 
 void Game::CreatFood()
 {
+	//随机生成一个位置
 	int RandRow = rand() % (ROW - 2) + 1;
 	int RandCol = rand() % (COL - 2) + 1;
+
 	Node* s = GameSnake->head;
 	while (s)
 	{
@@ -100,6 +106,7 @@ void Game::CreatFood()
 		}
 		s = s->next;
 	}
+
 	GameFood->pos = Node(RandRow, RandCol);
 	GameFood->FoodNum = 1;
 	GameMap->pMap[RandRow][RandCol] = 食物;
@@ -110,14 +117,17 @@ void Game::PrintFood()
 	GameMap->pMap[GameFood->pos.row][GameFood->pos.col] = 食物;
 }
 
-bool IsKeyPressed(int vkey) {
+bool IsKeyPressed(int vkey) 
+{
 	static bool keyPressed = false;
 	bool pressed = (GetKeyState(vkey) & 0x8000) != 0;
-	if (pressed && !keyPressed) {
+	if (pressed && !keyPressed) 
+	{
 		keyPressed = true;
 		return true;
 	}
-	if (!pressed && keyPressed) {
+	if (!pressed && keyPressed) 
+	{
 		keyPressed = false;
 	}
 	return false;
@@ -129,12 +139,14 @@ void Game::update()
 	{
 		PrintSnake(空);
 
-		//if ( _kbhit() )//判断键盘有没有按键操作，如果没有就返回假0，否则为真1<conio.h>
+		//之前好用，可能是更新vs2022后无法使用
+		// 
+		//if ( _kbhit() )//判断键盘有没有按键操作，如果没有就返回假0，否则为真1 <conio.h>
 		//{
 		//	GameSnake->ChangeDir();
 		//}
 
-		if (IsKeyPressed('W') )
+		if (IsKeyPressed('W'))
 		{
 			GameSnake->ChangeDir('w');
 		}
@@ -142,7 +154,7 @@ void Game::update()
 		{
 			GameSnake->ChangeDir('s');
 		}
-		else if (IsKeyPressed('A') )
+		else if (IsKeyPressed('A'))
 		{
 			GameSnake->ChangeDir('a');
 		}
@@ -153,6 +165,8 @@ void Game::update()
 
 		GameSnake->Move();
 		PrintSnake(蛇);
+
+		//判断状态
 		defeat();
 		Eaten();
 		if (GameFood->FoodNum == 0)
@@ -161,6 +175,7 @@ void Game::update()
 		}
 
 		GameMap->DrawMap();
-		SleepEx(GameSnake->SPEED*20,false);
+
+		SleepEx(GameSnake->SPEED * 20, false);
 	}
 }
